@@ -9,14 +9,16 @@ Additionally, a python module is loaded to activate the conda environment nequip
 
 Instructions are taken from [this page](https://github.com/mir-group/nequip/tree/develop), which may prove useful. However, they are slightly modified, and some of the modifications to the source code have already been made, so the specifics are below:
 
-First, a build directory is made and entered (if one already exists, it should be removed).
-Then, the build directory is made using
-    mkdir build
-and it is entered with
-    cd build
-
-After this, a cmake command is run:
-    cmake ../cmake -DMKL_INCLUDE_DIR=`python -c "import sysconfig;from pathlib import Path;print(Path(sysconfig.get_paths()[\"include\"]).parent)"` -DCMAKE_PREFIX_PATH=`python -c 'import torch;print(torch.utils.cmake_prefix_path)'`
-
-Once this has completed, while still in the build directory, the following is run:
-    make -j$(nproc)
+1. The build directory is made and entered (if one already exists, it should be removed).
+```
+mkdir build
+cd build
+```
+2. A cmake command is run:
+```
+cmake ../cmake -DMKL_INCLUDE_DIR=`python -c "import sysconfig;from pathlib import Path;print(Path(sysconfig.get_paths()[\"include\"]).parent)"` -DCMAKE_PREFIX_PATH=`python -c 'import torch;print(torch.utils.cmake_prefix_path)'`
+```
+3. Once this has completed, while still in the build directory, the following is run:
+```
+make -j$(nproc)
+```
