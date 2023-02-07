@@ -1,0 +1,16 @@
+name: nequip_env
+channels:
+- nvidia/label/cuda-11.8.0
+- pytorch
+- intel
+- defaults
+dependencies:
+- _openmp_mutex=4.5=1_gnu
+- libcusparse=11.7.5.86=0
+- ffmpeg=4.3=hf484d3e_0
+- pytorch=1.11.0=py3.9_cuda11.3_cudnn8.2.0_0
+- pytorch-mutex=1.0=cuda
+- torchaudio=0.11.0=py39_cu113
+- torchvision=0.12.0=py39_cu113
+prefix: /u/af/cf/cgerber/.conda/envs/nequip_env
+

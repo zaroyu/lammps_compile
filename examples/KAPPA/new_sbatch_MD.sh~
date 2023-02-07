@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH --account=190208162405
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH -p gpu
+#SBATCH --time=01:00:00
+#SBATCH --job-name=MD
+#SBATCH --export=ALL
+#SBATCH -o out
+#SBATCH -e err
+#SBATCH --gres=gpu:v100:1
+
+# load modules
+module load compilers/intel/2021.1
+module load libs/mkl/2021.1
+module load mpi/impi/2021.1 
+module load libs/cuda/11.3
+module load apps/python3/2020.02
+
+cd $SLURM_SUBMIT_DIR
+echo "running job"
+srun --mpi=pmi2 lmp_nequip -in toluene_minimize.in
+echo "job has finished"
